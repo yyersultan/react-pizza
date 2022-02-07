@@ -13,3 +13,15 @@ export const deleteCartItem = (id: string):CartsAction => {
         payload: id
     }
 }
+export const plusCartItem = (id:string):CartsAction => {
+    return {
+        type: CartActionsTypes.PLUS_CART_ITEM,
+        payload:id
+    }
+}
+export const minusCartItem = (id:string):CartsAction => {
+    return {
+        type: CartActionsTypes.MINUS_CART_ITEM,
+        payload: id
+    }
+}

@@ -1,5 +1,5 @@
 import { CartActionsTypes, CartsAction } from "../actions/types"
-import { CartItems } from "./types"
+import { CartItems,Items } from "./types"
 
 
 
@@ -8,7 +8,8 @@ const initialState:CartItems = {
     totalPrice:0,
     totalCount:0
 }
-const{ ADD_TO_CART,DELETE_CART_ITEM } = CartActionsTypes
+const{ ADD_TO_CART,DELETE_CART_ITEM,PLUS_CART_ITEM,MINUS_CART_ITEM } = CartActionsTypes;
+
 export const cartReducer = (state=initialState,action:CartsAction):CartItems => {
     switch(action.type){
         case ADD_TO_CART:
@@ -25,14 +26,43 @@ export const cartReducer = (state=initialState,action:CartsAction):CartItems => 
                     price:0
                 }
             }
-            return {...state,items}
+            return {...state,items,totalPrice: getTotalPrice(items)}
         case DELETE_CART_ITEM: 
             const cart_items = {...state.items};
             delete cart_items[action.payload];
             return {
                 ...state,
-                items: cart_items
+                items: cart_items,
+                totalPrice: getTotalPrice(cart_items)
+            }
+        case PLUS_CART_ITEM:
+            const items_copy = {...state.items};
+            items_copy[action.payload].count += 1; 
+            return {
+                ...state,
+                items: items_copy,
+                totalPrice: getTotalPrice({...state.items})
+            }
+        case MINUS_CART_ITEM:
+            const copy_items = {...state.items};
+            if(copy_items[action.payload].count > 1){
+                copy_items[action.payload].count -= 1;
+            }
+            return {
+                ...state,
+                items: copy_items,
+                totalPrice: getTotalPrice(copy_items)
             }
         default : return state
     }
+}
+
+function getTotalPrice(items:Items):number {
+    let count:number = 0;
+    Object.keys(items).forEach(key => {
+        const c = items[key].count;
+        const item = items[key].item.price;
+        count += (c * item);
+    });
+    return count;
 }

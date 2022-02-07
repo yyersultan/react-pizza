@@ -37,9 +37,13 @@
     background-color: #fff;
     padding: 12px 10px;
     font-weight: bold;
-    transition: all .4s ease;
+    transition: color .4s ease;
+    transition: background-color .4s ease;
     border-radius: 10px ;
     margin-left: 5px;
+  }
+  .btnAdd:active{
+    transform: translateY(1px);
   }
   .btnAdd:disabled{
     cursor: not-allowed;

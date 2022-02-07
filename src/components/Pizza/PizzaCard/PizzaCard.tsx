@@ -54,7 +54,6 @@ export const PizzaCard:FC<PizzaCardProps> = ({pizza,dispatch}) => {
                     onClick={() => setCurr(size)}
                     className={`${styles.btnAdd}
                       ${size === curr && styles.actBtn}`}>
-                        
                       {size}cm
                     </button>
           })}
@@ -63,7 +62,7 @@ export const PizzaCard:FC<PizzaCardProps> = ({pizza,dispatch}) => {
       </div>
 
       <div className={styles.btnGroup}>
-        <span className={styles.price}>от {Math.floor(pizza.price * (curr/10))} P</span>
+        <span className={styles.price}>от {Math.floor(pizza.price * (curr/10))} T</span>
         <button 
           onClick={onAddClick}
           className={`${styles.btnAdd} ${styles.btnAddtoCard}`}>

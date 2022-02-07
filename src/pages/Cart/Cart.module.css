@@ -1,3 +1,19 @@
+.btnMinusPlus{
+  border: 0;
+  border-radius: 20px;
+  width: 30px;
+  background-color: #eee;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.btnMinusPlus:hover{
+  background-color: silver;
+}
+.btnMinusPlus:active{
+  transform: translateY(1px);
+}
+
 .container {
     padding: 30px;
     
@@ -12,9 +28,11 @@
   }
   
   .imgContainer {
+    
     width: 100px;
     height: 100px;
     position: relative;
+
   }
   .pizzaImg {
       object-fit: cover;
@@ -69,6 +87,12 @@
   }
   .deleteBtn:hover{
     transform: rotate(180deg);
+  }
+  .tr {
+    text-align: center;
+  }
+  .quantity {
+    padding:  0 10px;
   }
   
   @media screen and (max-width: 480px) {

@@ -1,7 +1,6 @@
-import { count } from "console";
-import { FC } from "react";
+import { FC, memo } from "react";
 import { useDispatch } from "react-redux";
-import { deleteCartItem } from "../../store/actions/cart";
+import { deleteCartItem, minusCartItem, plusCartItem } from "../../store/actions/cart";
 import { Pizzas } from "../../store/reducers/types";
 import { types_list } from "../../utils/contants";
 import styles from "./Cart.module.css";
@@ -12,10 +11,14 @@ interface Cart{
     id: string
 }
 
-export const CartItem:FC<Cart> = ({ cart,count,id }) => {
+export const CartItem:FC<Cart> = memo(({ cart,count,id }) => {
   const dispatch = useDispatch();
 
   const onDeleteItem = () => dispatch(deleteCartItem(id));
+
+  const onMinusHandle = () => dispatch( minusCartItem(id));
+
+  const onPlusHandle = () => dispatch( plusCartItem(id) );
 
     return (
         <tr className={styles.tr}>
@@ -24,8 +27,7 @@ export const CartItem:FC<Cart> = ({ cart,count,id }) => {
                 <img
                   src={cart.imageUrl}
                   className={styles.pizzaImg}
-                  alt=""
-                  width={'100'}
+                  alt="" width={'100'}
                   height={'100'}
                 />
               </div>
@@ -39,19 +41,23 @@ export const CartItem:FC<Cart> = ({ cart,count,id }) => {
               </span>
             </td>
             <td>
-              <span className={styles.price}>{cart.price} P</span>
+              <span className={styles.price}>{cart.price} T</span>
             </td>
             <td>
-              <button>-</button>
+              <button 
+              disabled = {count === 1}
+              onClick={onMinusHandle} 
+              className={styles.btnMinusPlus}>
+              -</button>
               <span className={styles.quantity}>{count}</span>
-              <button>+</button>
+              <button onClick={onPlusHandle} className={styles.btnMinusPlus}>+</button>
             </td>
             <td>
-              <span className={styles.total}>{cart.price * count} P</span>
+              <span className={styles.total}>{cart.price * count} T</span>
             </td>
             <td onClick={onDeleteItem}>
             <i className={`far fa-times-circle ${styles.deleteBtn}`} />
             </td>
           </tr>
     )
-}
+})

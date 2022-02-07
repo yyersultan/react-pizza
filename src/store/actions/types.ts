@@ -36,7 +36,9 @@ FetchPizzasSucces|FetchPizzasError|SetSortby
 
 export enum CartActionsTypes{
     ADD_TO_CART = 'ADD_TO_CART',
-    DELETE_CART_ITEM = 'DELETE_CART_ITEM'
+    DELETE_CART_ITEM = 'DELETE_CART_ITEM',
+    PLUS_CART_ITEM = 'PLUS_CART_ITEM',
+    MINUS_CART_ITEM = 'MINUS_CART_ITEM'
 }
 interface AddToCart {
     type: CartActionsTypes.ADD_TO_CART,
@@ -46,5 +48,14 @@ interface DeleteCartItem  {
     type: CartActionsTypes.DELETE_CART_ITEM,
     payload: string
 }
+interface PlusCartItem {
+    type: CartActionsTypes.PLUS_CART_ITEM,
+    payload: string // pizza's id
+}
+interface MinusCartItem {
+    type: CartActionsTypes.MINUS_CART_ITEM,
+    payload: string
+} 
+
 export type CartsAction = AddToCart|
-DeleteCartItem;
+DeleteCartItem|PlusCartItem|MinusCartItem;

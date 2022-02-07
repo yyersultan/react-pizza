@@ -6,7 +6,7 @@ import { OrderTotal } from "../../components/OrderTotal/OrderTotal";
 import { EmptyCart } from "../../components/EmptyCart/EmptyCart";
 
 export const Cart:React.FC = () => {
-  const{items} = useTypedSelector(state => state.cart);
+  const{items,totalPrice} = useTypedSelector(state => state.cart);
 
   if(!Object.keys(items).length){
     return <EmptyCart />
@@ -16,7 +16,7 @@ export const Cart:React.FC = () => {
       <div className={styles.left}>
         <table className={styles.table}>
           <tr className={styles.trTitle}>
-            <th>Product</th>
+            <th style={{textAlign:'left'}}>Product</th>
             <th>Name</th>
             <th>Extras</th>
             <th>Price</th>
@@ -34,7 +34,7 @@ export const Cart:React.FC = () => {
           
         </table>
       </div>
-      <OrderTotal />
+      <OrderTotal totalPrice = {totalPrice}/>
     </div>
   );
 };

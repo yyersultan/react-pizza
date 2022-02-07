@@ -5,9 +5,13 @@ import cart from '../../assets/img/cart.png'
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useTranslation } from 'react-i18next';
+
 
 export const Navbar:React.FC = () => {
-  const{items} = useTypedSelector(state => state.cart)
+  const{items} = useTypedSelector(state => state.cart);
+
+  
   const count_prod:number = Object.keys(items).length;
     return (
         <div className={styles.container}>
@@ -16,7 +20,7 @@ export const Navbar:React.FC = () => {
               <img src= {telephone} alt="" width="32" height="32" />
             </div>
             <div className={styles.texts}>
-              <div className={styles.text}>ORDER NOW!</div>
+              <div className={styles.text}>ORDER NOW</div>
               <div className={styles.text}>777 971 6217</div>
             </div>
           </div>
@@ -25,12 +29,8 @@ export const Navbar:React.FC = () => {
               <li className={styles.listItem}>
                 <NavLink to={'/'}>Homepage </NavLink>
                 </li>
-              <li className={styles.listItem}>Products</li>
-              <li className={styles.listItem}>Menu</li>
               <img src={logo} alt="" width="160px" height="69px" />
-              <li className={styles.listItem}>Events</li>
-              <li className={styles.listItem}>Blog</li>
-              <li className={styles.listItem}>Contact</li>
+              <li  className={styles.listItem}>Ru</li>
             </ul>
           </div>
           <div className={styles.item}>
