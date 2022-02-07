@@ -9,7 +9,6 @@ function App() {
       <Navbar />
       <Route exact path={'/'} component ={Home} />
       <Route path={'/cart'} component={Cart}/>
-      
     </div>
   );
 }

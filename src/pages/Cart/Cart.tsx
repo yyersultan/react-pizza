@@ -1,8 +1,16 @@
 import styles from "./Cart.module.css";
-import pizzaImg from '../../assets/img/pizza.png';
 import React from "react";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { CartItem } from "./CartItem";
+import { OrderTotal } from "../../components/OrderTotal/OrderTotal";
+import { EmptyCart } from "../../components/EmptyCart/EmptyCart";
 
 export const Cart:React.FC = () => {
+  const{items} = useTypedSelector(state => state.cart);
+
+  if(!Object.keys(items).length){
+    return <EmptyCart />
+  }
   return (
     <div className={styles.container}>
       <div className={styles.left}>
@@ -14,80 +22,19 @@ export const Cart:React.FC = () => {
             <th>Price</th>
             <th>Quantity</th>
             <th>Total</th>
+            <th>Delete</th>
           </tr>
-          <tr className={styles.tr}>
-            <td>
-              <div className={styles.imgContainer}>
-                <img
-                  src={pizzaImg}
-                  className={styles.pizzaImg}
-                  alt=""
-                />
-              </div>
-            </td>
-            <td>
-              <span className={styles.name}>CORALZO</span>
-            </td>
-            <td>
-              <span className={styles.extras}>
-                Double ingredient, spicy sauce
-              </span>
-            </td>
-            <td>
-              <span className={styles.price}>$19.90</span>
-            </td>
-            <td>
-              <span className={styles.quantity}>2</span>
-            </td>
-            <td>
-              <span className={styles.total}>$39.80</span>
-            </td>
-          </tr>
-          <tr className={styles.tr}>
-            <td>
-              <div className={styles.imgContainer}>
-                <img
-                  src={pizzaImg}
-                  className={styles.pizzaImg}
-                  alt=""
-                />
-              </div>
-            </td>
-            <td>
-              <span className={styles.name}>CORALZO</span>
-            </td>
-            <td>
-              <span className={styles.extras}>
-                Double ingredient, spicy sauce
-              </span>
-            </td>
-            <td>
-              <span className={styles.price}>$19.90</span>
-            </td>
-            <td>
-              <span className={styles.quantity}>2</span>
-            </td>
-            <td>
-              <span className={styles.total}>$39.80</span>
-            </td>
-          </tr>
+          {Object.keys(items).map((key,index) => (
+            <CartItem 
+              key={`${key}_@${index}`} 
+              id = {key}
+              count = {items[key].count}
+              cart={items[key].item}/>
+          ))}
+          
         </table>
       </div>
-      <div className={styles.right}>
-        <div className={styles.wrapper}>
-          <h2 className={styles.title}>CART TOTAL</h2>
-          <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Subtotal:</b>$79.60
-          </div>
-          <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Discount:</b>$0.00
-          </div>
-          <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Total:</b>$79.60
-          </div>
-          <button className={styles.button}>CHECKOUT NOW!</button>
-        </div>
-      </div>
+      <OrderTotal />
     </div>
   );
 };

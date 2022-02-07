@@ -1,6 +1,6 @@
 .container {
-    padding: 50px;
-    display: flex;
+    padding: 30px;
+    
   }
   
   .left {
@@ -60,6 +60,15 @@
     font-weight: bold;
     cursor: pointer;
     margin-top: 20px;
+  }
+  .deleteBtn {
+    cursor: pointer;
+    color: red;
+    font-size: 35px;
+    transition: all .3s ease;
+  }
+  .deleteBtn:hover{
+    transform: rotate(180deg);
   }
   
   @media screen and (max-width: 480px) {

@@ -7,6 +7,11 @@
     justify-content: center;
     padding: 20px 40px;
     cursor: pointer;
+    margin-left: 10px;
+    margin-bottom: 15px;
+  }
+  .pizzaBlock {
+    border-radius: 10px;
   }
   
   .title {
@@ -25,6 +30,72 @@
     text-align: center;
     color: #777;
   }
+  .btnAdd {
+    
+   border: 0;
+    color: #333;
+    background-color: #fff;
+    padding: 12px 10px;
+    font-weight: bold;
+    transition: all .4s ease;
+    border-radius: 10px ;
+    margin-left: 5px;
+  }
+  .btnAdd:disabled{
+    cursor: not-allowed;
+    pointer-events: all !important;
+    color: silver;
+    background-color: #fff;
+  }
+  .btnAdd:disabled:hover{
+    background-color: #fff;
+    color: silver;
+  }
+  .btnTpyesGroup {
+    display: flex;
+    justify-content: space-between;
+  }
+  .btnTpyesGroup>button{
+    width: 200px;
+  }
+  .btnAdd:hover {
+    background-color: orange;
+    color: #fff;
+  }
+  .actBtn {
+    background-color: rgb(255, 123, 0);
+    color: #fff;
+  }
+  .btnSizeGroup{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+  }
+  .btnSizeGroup>button{
+    width: 100px;
+  }
+  .btnChooseGroup {
+    width: 100%;
+    background-color: rgb(235, 235, 235);
+    padding: 20px 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  .btnGroup {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .btnAddtoCard {
+    background-color: rgb(255, 123, 0);;
+    color: #fff;
+  }
+  
+
   
   @media screen and (max-width: 480px) {
     .container {
@@ -39,4 +110,13 @@
     .desc {
       font-size: 24px;
     }
+  }
+
+  .PizzaImg {
+    width:400px;
+    height:400px;
+    transition: all .4s ease;
+  }
+  .PizzaImg:hover {
+    transform: translateY(-5px);
   }

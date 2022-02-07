@@ -4,8 +4,11 @@ import logo from '../../assets/img/logo.png';
 import cart from '../../assets/img/cart.png'
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 export const Navbar:React.FC = () => {
+  const{items} = useTypedSelector(state => state.cart)
+  const count_prod:number = Object.keys(items).length;
     return (
         <div className={styles.container}>
           <div className={styles.item}>
@@ -19,8 +22,8 @@ export const Navbar:React.FC = () => {
           </div>
           <div className={styles.item}>
             <ul className={styles.list}>
-              <li >
-                <NavLink className={styles.listItem} to={'/'}>Homepage </NavLink>
+              <li className={styles.listItem}>
+                <NavLink to={'/'}>Homepage </NavLink>
                 </li>
               <li className={styles.listItem}>Products</li>
               <li className={styles.listItem}>Menu</li>
@@ -33,7 +36,7 @@ export const Navbar:React.FC = () => {
           <div className={styles.item}>
             <NavLink to={'/cart'} className={styles.cart}>
               <img src= {cart} alt="" width="30px" height="30px" />
-              <div className={styles.counter}>2</div>
+              <div className={styles.counter}>{count_prod}</div>
             </NavLink>
           </div>
         </div>

@@ -64,6 +64,11 @@
     margin: 20px;
     font-weight: 500;
   }
+
+  .listItem > a {
+    text-decoration: none;
+    color: #fff;
+  }
   
   .cart{
       position: relative;

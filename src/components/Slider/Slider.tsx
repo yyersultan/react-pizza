@@ -1,10 +1,10 @@
 import arrowl from '../../assets/img/arrowl.png';
 import arrowr from '../../assets/img/arrowr.png';
 import styles from "./Slider.module.css";
-import { useState } from "react";
+import { FC, useState } from "react";
 
 
-export const Slider = () => {
+export const Slider:FC = () => {
  const [index, setIndex] = useState(0);
  const images = [
    "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/185001061/original/575d273286db5d27c139f5657781b002d99ddd09/design-pizza-banner-burger-flyer-food-flyer.jpg",

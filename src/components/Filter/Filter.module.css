@@ -1,0 +1,64 @@
+.Filter {
+    margin-top: 50px;
+    padding: 0 190px ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.Category {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+.categoryItem {
+    cursor: pointer;
+    font-weight: bold;
+    padding: 13px 35px;
+    background-color: #eee;
+    border-radius: 20px;
+}
+
+.activeCategory {
+    background-color: #333;
+    color: #fff;
+}
+.SortBy {
+    cursor: pointer;
+    width: 18%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.sortName {
+    color: rgb(255, 123, 75);
+    font-weight: bold;
+    border-bottom: 1px solid orange;
+    margin-left: 5px;
+}
+.SortByHeader {
+    display: flex;
+    align-items: center;   
+}
+.SortByHeader > p > i {
+    margin-right: 5px;
+}
+.sotyByList {
+    position: absolute;
+    top: 60%;
+    right: 10%;
+    list-style-type: none;
+    background-color: rgb(231, 231, 231);
+    padding: 10px;
+    border-radius: 10px;
+    width: 200px;
+}
+.sotyByList > li {
+    margin-bottom: 7px;
+}
+.sotyByList > li:hover{
+    color: orange;
+}
