@@ -20,7 +20,7 @@ export const PizzaList:React.FC = () => {
       <h1 className={styles.title}>THE BEST PIZZA IN TOWN</h1>
       
       <div className={styles.wrapper}>
-          {loading ? Array(6).fill(0).map(el => <MyLoader />) : pizzas.map((pizza) => (
+          {loading ? Array(6).fill(0).map((_,i) => <MyLoader key={i}/>) : pizzas.map((pizza) => (
           <PizzaCard  
           key={pizza.id}
           dispatch = {dispatch}

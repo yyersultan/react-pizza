@@ -56,6 +56,39 @@ interface MinusCartItem {
     type: CartActionsTypes.MINUS_CART_ITEM,
     payload: string
 } 
-
 export type CartsAction = AddToCart|
 DeleteCartItem|PlusCartItem|MinusCartItem;
+
+//  AUTH PAGE --------------------------------------------------------------------------
+export interface IUserData {
+    username: string,
+    password: string
+}
+export enum AuthActionsTypes {
+    SET_LOADING='SET_LOADING',
+    SET_AUTH = 'SET_AUTH',
+    SET_USER_DATA = 'SET_USER_DATA',
+    AUTH_LOGOUT = 'AUTH_LOGOUT',
+    SET_ERROR = 'SET_ERROR'
+}
+interface SetLoading {
+    type: AuthActionsTypes.SET_LOADING,
+    payload: boolean
+}
+interface SetAuth {
+    type: AuthActionsTypes.SET_AUTH,
+    payload: boolean
+}
+interface SetUserData {
+    type: AuthActionsTypes.SET_USER_DATA,
+    payload:IUserData 
+}
+interface AuthLogout {
+    type: AuthActionsTypes.AUTH_LOGOUT,
+}
+interface SetError {
+    type: AuthActionsTypes.SET_ERROR,
+    payload: string
+}
+export type AuthActions = SetLoading
+|SetAuth|SetUserData | AuthLogout|SetError;

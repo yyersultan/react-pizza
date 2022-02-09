@@ -27,10 +27,12 @@ export const Navbar:React.FC = () => {
           <div className={styles.item}>
             <ul className={styles.list}>
               <li className={styles.listItem}>
-                <NavLink to={'/'}>Homepage </NavLink>
+                <NavLink to={'/'}>Home </NavLink>
                 </li>
               <img src={logo} alt="" width="160px" height="69px" />
-              <li  className={styles.listItem}>Ru</li>
+              <li className={styles.listItem}>
+                <NavLink to={'/login'}> Admin </NavLink> 
+              </li>
             </ul>
           </div>
           <div className={styles.item}>

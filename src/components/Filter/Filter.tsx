@@ -51,20 +51,19 @@ export const Filter:FC = () => {
                     {c}</li>
                 ))}
             </ul>
+            <div ref = {ref}
+                onClick={() => setShowlist(prev=> !prev)}
+                className={styles.SortBy}>
 
-            <div
-            ref = {ref}
-            onClick={() => setShowlist(prev=> !prev)}
-            className={styles.SortBy}>
-                <div className={styles.SortByHeader}>
-                    <p>
-                        {showList ?  <i className="fas fa-caret-up"/>
-                        :<i className="fas fa-caret-down"></i> }
+                    <div className={styles.SortByHeader}>
+                        <p>
+                            {showList ?  <i className="fas fa-caret-up"/>
+                            :<i className="fas fa-caret-down"></i> }
 
-                         Сортировка по:
-                    </p>
-                    <span className={styles.sortName}>{sortByName}</span>
-                </div>
+                            Сортировка по:
+                        </p>
+                        <span className={styles.sortName}>{sortByName}</span>
+                    </div>
                 {showList && <ul className={styles.sotyByList}>
                     {sortByList.map((name) => (
                         <li 

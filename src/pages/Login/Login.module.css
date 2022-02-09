@@ -1,0 +1,13 @@
+.LoginForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    
+}
+.Form {
+    padding: 30px !important;
+    border-radius: 20px;
+    width: 400px;
+    background-color:rgb(241, 241, 241)
+}
