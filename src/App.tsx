@@ -1,7 +1,6 @@
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
 import { AdminRoutes } from "./components/Routes/AdminRoutes";
 import { ClientRoutes } from "./components/Routes/ClientRoutes";
 import { useTypedSelector } from "./hooks/useTypedSelector";

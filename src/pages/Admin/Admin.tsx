@@ -1,13 +1,10 @@
 import { FC } from "react"
+import styles from './Admin.module.css';
 
 export const Admin:FC = () => {
     return (
-        <div>
-            Admin page heloo
-            <h1>sd
-
-            </h1>
-            <h1>sd</h1>
+        <div className={styles.Admin}>
+            Admin
         </div>
     )
 }

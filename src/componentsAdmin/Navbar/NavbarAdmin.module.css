@@ -1,0 +1,21 @@
+.NavbarAdmin{
+    width:250px;
+    padding: 10px;
+    background-color:teal;
+    height: 100vh;
+}
+.NavbarAdminList {
+    list-style-type: none;
+    padding: 0;
+}
+.NavbarAdminList> li {
+    border-bottom: 1px solid blue;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.NavbarAdminList> li>a{
+    color: #fff;
+}

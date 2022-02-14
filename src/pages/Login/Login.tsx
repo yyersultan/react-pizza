@@ -13,8 +13,6 @@ export const Login:FC = () => {
 
     const onFinish = (values:IUserData) => dispatch(login(values));
     
-    
-
     return (
         <div className={styles.LoginForm}>
         <Form

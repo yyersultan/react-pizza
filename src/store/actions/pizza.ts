@@ -8,17 +8,17 @@ const sleep = (time:number) => new Promise(resolve => {
     },time);
 })
 
-export const getPizzaList = (sortBy:string='',category:number|null = null) => async(dispath:Dispatch<PizzasAction>) => {
+export const getPizzaList = (sortBy:string='',category:number|null = null,orderBy:string = 'asc') => async(dispath:Dispatch<PizzasAction>) => {
 
     try{
         dispath({type:PizzasActionTypes.FETCH_PIZZAS});
         if(category !== null){
-            const {data} = await axios.get(`http://localhost:3001/pizzas?category=${category}&_sort=${sortBy}`);
+            const {data} = await axios.get(`http://localhost:3001/pizzas?category=${category}&_sort=${sortBy}&_order=${orderBy}`);
             sleep(1000).then(() => {
                 dispath({type:PizzasActionTypes.FETCH_PIZZAS_SUCCESS,payload:data}) 
             })
         }else{
-            const {data} = await axios.get(`http://localhost:3001/pizzas?_sort=${sortBy}`);
+            const {data} = await axios.get(`http://localhost:3001/pizzas?_sort=${sortBy}&_order=${orderBy}`);
             sleep(1000).then(() => {
                 dispath({type:PizzasActionTypes.FETCH_PIZZAS_SUCCESS,payload:data}) 
             });

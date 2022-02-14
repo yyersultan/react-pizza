@@ -52,7 +52,12 @@ export const login = (userData:IUserData) => async(dispatch:Dispatch<AuthActions
         console.log(e);
     }
 }
-
+export const logout = () => async(dispatch:Dispatch<AuthActions>) => {
+    localStorage.removeItem('isAuth');
+    localStorage.removeItem('userData');
+    dispatch(setAuthAc(false));
+    dispatch(setUserDataAc({} as IUserData))
+}
 export function sleep(timer:number):Promise<any> {
     return new Promise((res) => {
         setTimeout(() => {
