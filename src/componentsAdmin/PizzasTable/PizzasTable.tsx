@@ -1,15 +1,39 @@
-import { Pie,measureTextWidth } from "@ant-design/charts";
 import { Button, Table } from "antd";
-import { FC, useEffect } from "react"
+import { FC, useEffect, useState } from "react"
 import { useDispatch } from "react-redux";
 import { PieChart } from "../../components/Charts/PieChart";
 import { useTypedSelector } from "../../hooks/useTypedSelector"
 import { getPizzaList } from "../../store/actions/pizza";
+import { Pizzas } from "../../store/reducers/types";
 import { types_list } from "../../utils/contants";
+import { PizzasModal } from "../PizzasModal/PizzasModal";
+import styles from './PizzasTable.module.css';
+
+const initalState:Pizzas = {
+    id:0,
+    imageUrl:'',
+    name:'',
+    price:0,
+    sizes:[],
+    category:0,
+    types:[],
+    rating:0,
+    
+}
 
 export const PizzasTable:FC = () => {
     const {pizzas,loading} = useTypedSelector(state => state.pizzas);
     const dispatch = useDispatch();
+    const[pizza,setPizza] = useState<Pizzas|null>(null);
+    const[modal,setModal] = useState(false);
+    const onEditClick = (pizzasItem:Pizzas) =>{
+        setPizza(pizzasItem);
+        setModal(true);
+    }
+    const onNewPizzaClick =() => {
+        setPizza(initalState);
+        setModal(true)
+    }
     const columns = [
         {title:'Id',dataIndex:'id',sorter:true},
         {title:'ImageUrl',dataIndex:'imageUrl',
@@ -24,7 +48,7 @@ export const PizzasTable:FC = () => {
         {title:'Price',dataIndex:'price',sorter:true},   
         {title:'Category',dataIndex:'category'},   
         {title:'Rating',dataIndex:'rating',sorter:true},   
-        {title:'Edit',dataIndex:'edit',render:(text:any,record:any) => <Button onClick={() => console.log(text)} >Edit</Button>},   
+        {title:'Edit',dataIndex:'edit',render:(text:any,record:Pizzas) => <Button onClick={() => onEditClick(record)} >Edit</Button>},   
         {title:'Delete',dataIndex:'delete',render:() => <Button danger type="primary">Delete</Button>},   
     ]
     useEffect(() => {
@@ -32,18 +56,19 @@ export const PizzasTable:FC = () => {
     },[dispatch]);
    
     const handleTableChange = (pagination:any,filters:any,sorter:any) => {
-        console.log(sorter);
         let ord = (sorter.order+'') === 'ascend' ? 'asc':'desc'
         dispatch(getPizzaList(sorter.field,null, ord));
     }
     return(
-        <div>
+        <div className={styles.PizzasTable}>
+            <Button onClick={onNewPizzaClick}>New Pizza</Button>
             <Table 
             loading = {loading}
             onChange={handleTableChange}
             columns={columns} 
             dataSource={pizzas}/>
-           <PieChart pizzas={pizzas}/>
+            <PizzasModal setModal = {setModal} modal = {modal}  pizzas={pizza}/>
+           <PieChart  pizzas={pizzas}/>
         </div>
     )
 }

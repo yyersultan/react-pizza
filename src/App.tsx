@@ -9,6 +9,7 @@ import { IUserData } from "./store/actions/types";
 
 
 function App() {
+  
   const{isAuth} = useTypedSelector(state => state.auth);
   const dispatch = useDispatch();
 

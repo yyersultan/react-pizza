@@ -1,0 +1,21 @@
+
+.Form {
+    padding: 30px;
+}
+.FormItem {
+    margin-bottom: 30px;
+}
+.FormItem > label{
+    display: block;
+}
+.FormItem > input{
+    width: 400px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid skyblue;   
+    outline: none;
+    transition: border .2s ease;
+}
+.FormItem > input:focus{
+    border: 1px solid green;
+}

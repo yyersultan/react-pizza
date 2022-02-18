@@ -1,5 +1,5 @@
 import { Pie,measureTextWidth } from "@ant-design/charts"
-import { FC, useState } from "react";
+import { FC, memo } from "react";
 import { Pizzas } from "../../store/reducers/types";
 import { countCategory, IPieDataCategory } from "../../utils/countCategory";
 
@@ -7,7 +7,7 @@ interface PieChartProps {
     pizzas : Pizzas[]
 }
 
-export const PieChart:FC<PieChartProps> = ({pizzas}) => {
+export const PieChart:FC<PieChartProps> = memo(({pizzas}) => {
     const data:IPieDataCategory[] = countCategory(pizzas.map(p => p.category));
 
     function renderStatistic(containerWidth:number,text:string,style:any):string{
@@ -84,4 +84,4 @@ export const PieChart:FC<PieChartProps> = ({pizzas}) => {
         ],
       };
     return <Pie {...config}/>
-}
+})

@@ -9,7 +9,7 @@ import { rootReducer } from './store/reducers/rootReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css';
 
 const store = createStore(rootReducer,composeWithDevTools(applyMiddleware(thunk)));
 

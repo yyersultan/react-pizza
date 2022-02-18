@@ -13,3 +13,4 @@ export const sortByList:SortByList[] =  [
     {name: 'price',ru: 'цене',orderBy:'asc'},
     {name:'name',ru:'алфавит',orderBy:'asc'}
 ]
+ 
